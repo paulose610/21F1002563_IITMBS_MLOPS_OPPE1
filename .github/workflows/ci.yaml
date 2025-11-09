@@ -1,0 +1,71 @@
+---
+name: Sanity Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [dev]
+
+permissions:
+  
+  contents: write
+  pull-requests: write
+  
+jobs:
+  sanity_check:
+    runs-on: ubuntu-latest
+
+    env:
+      REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GCP_CREDENTIALS_JSON: ${{ secrets.GCP_CREDENTIALS_JSON }}
+
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Set up CML
+        uses: iterative/setup-cml@v2
+
+      - name: Install dependencies
+        run: |
+          pip install -r req.txt
+          pip install pytest
+
+      - name: Authenticate to GCP
+        run: |
+          echo "$GCP_CREDENTIALS_JSON" > /tmp/gcp-key.json
+          export GOOGLE_APPLICATION_CREDENTIALS=/tmp/gcp-key.json
+          gcloud auth activate-service-account --key-file=/tmp/gcp-key.json
+          gcloud config set project winged-quanta-472908-n1
+
+      - name: Pull data and model from DVC remote
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: /tmp/gcp-key.json
+        run: dvc pull
+
+      - name: Run sanity tests (pytest)
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: /tmp/gcp-key.json
+        run: |
+          pytest tests/ --maxfail=1 --disable-warnings -q > test_output.txt || true
+
+      - name: Create and publish CML report
+        run: |
+          echo "### Sanity Test Report" > report.md
+          echo "" >> report.md
+          echo "#### Test Results" >> report.md
+          echo '```\n' >> report.md
+          cat test_output.txt >> report.md
+          echo '\n```' >> report.md
+
+          echo "" >> report.md
+          echo "#### Model Metrics" >> report.md
+          
+          if [ -f metadata/metrics.csv ]; then cat metadata/metrics.csv >> report.md; else echo "No metrics found." >> report.md; fi
+
+          cml comment create --publish report.md
