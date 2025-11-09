@@ -1,0 +1,26 @@
+
+R
+2
+
+stock_name"
+stock_nameJstock_prediction_project
+¬˜ÂÈØ·ñí¬˜ÂÈØ·ñí
+O
+/
+__dummy"
+__dummy_idJstock_prediction_project
+¬˜ÂÈèäüí¬˜ÂÈèäüí1"$51936dc5-4d2d-4c86-9e75-a5dbefb4fbcd*¬˜ÂÈ°¢´î2®
+
+stock_featuresstock_prediction_project
+stock_name"
+rolling_avg_10"
+volume_sum_102€£:•	timestampZ../source/train.parquetŠ1feast.infra.offline_stores.file_source.FileSource¢../source/train.parquet’¬˜ÂÈ º£"¬˜ÂÈğôÚí@b
+
+stock_name
+¬˜ÂÈˆæ†î¬˜ÂÈˆæ†îRµ
+²
+,feast.infra.online_stores.sqlite.SqliteTable"
+V/home/shared_workspace/21F1002563_IITMBS_MLOPS_OPPE1/feature_repo/data/online_store.db'stock_prediction_project_stock_featuresb°	timestampZ../source/train.parquetŠ1feast.infra.offline_stores.file_source.FileSource¢../source/train.parquetªstock_prediction_project’¬˜ÂÈ º£"¬˜ÂÈğôÚíŠ:
+
+stock_prediction_project
+¬˜ÂÈ¸°Ó¤¬˜ÂÈ¸°Ó¤
