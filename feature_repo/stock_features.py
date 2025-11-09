@@ -1,9 +1,10 @@
 from feast import Entity, FeatureView, FileSource, Field
 from feast.types import Float32, Int64, String
 from datetime import timedelta
+from feast.value_type import ValueType
 
 # Entity
-stock = Entity(name="stock_name", join_keys=["stock_name"], value_type=String)
+stock = Entity(name="stock_name", join_keys=["stock_name"],value_type=ValueType.STRING,)
 
 # Source (train data)
 stock_source = FileSource(
@@ -17,8 +18,14 @@ stock_fv = FeatureView(
     entities=[stock],
     ttl=timedelta(days=1),
     schema=[
+        Field(name="open", dtype=Float32),
+        Field(name="high", dtype=Float32),
+        Field(name="low", dtype=Float32),
+        Field(name="close", dtype=Float32),
+        Field(name="volume", dtype=Float32),
         Field(name="rolling_avg_10", dtype=Float32),
         Field(name="volume_sum_10", dtype=Float32),
     ],
+
     source=stock_source,
 )

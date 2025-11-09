@@ -28,7 +28,9 @@ def csv_to_parquet_split(
     # Save as Parquet
     train_path = output_dir / "train.parquet"
     val_path = output_dir / "validate.parquet"
-
+    
+    df["timestamp"] = pd.to_datetime(df["timestamp"],errors="coerce").dt.tz_localize(None)
+    
     print(f"Saving train data → {train_path} ({len(train_df)} rows)")
     train_df.to_parquet(train_path, index=False)
 
