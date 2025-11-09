@@ -8,3 +8,4 @@ feast
 mlflow
 ipykernel
 pytest
+pyarrow
