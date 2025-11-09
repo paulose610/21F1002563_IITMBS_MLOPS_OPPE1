@@ -9,7 +9,7 @@ T
 
 stock_name"
 stock_nameJstock_prediction_project
-¬˜ÂÈØ·ñíï ÂÈ‹Ûñ1"$ebd3f35b-e013-4925-b9ce-7c3ab4d0a9e8*™¬ÂÈø¢†Î2ô
+¬˜ÂÈØ·ñíï ÂÈ‹Ûñ1"$2fff52cd-757a-432d-9f01-7431664bff59*—ÄÂÈˆ¥­Š2†
 Á
 stock_featuresstock_prediction_project
 stock_name"
@@ -20,10 +20,11 @@ stock_name"
 
 volume"
 rolling_avg_10"
-volume_sum_102€£:•	timestampZ../source/train.parquetŠ1feast.infra.offline_stores.file_source.FileSource¢../source/train.parquet’ï ÂÈà€Õè"ï ÂÈà€Õè@b
+volume_sum_102€£:•	timestampZ../source/train.parquetŠ1feast.infra.offline_stores.file_source.FileSource¢../source/train.parquet’‘ÄÂÈÀÜƒÌ"‘ÄÂÈÀÜƒÌ@b
 
-stock_name.
-¬˜ÂÈˆæ†î™¬ÂÈàåÍ
+stock_name@
+¬˜ÂÈˆæ†î—ÄÂÈØ‹Š
+”´¨ÃŒ¼ìÄ
 ”´¨ÃŒ¼ìÄRµ
 ²
 ,feast.infra.online_stores.sqlite.SqliteTable"
